@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>おみくじアプリ</title>
+    <style>
+        /* ページ全体のレイアウト */
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0e5d8; /* 和風の背景色 */
+        }
+
+        /* 動画を中央に配置し、最大幅を指定 */
+        video {
+            max-width: 80%;
+            height: auto;
+            margin-bottom: 20px; /* 動画とボタンの間にスペースを追加 */
+        }
+
+        /* ボタンのスタイル */
+        button {
+            font-size: 1.5rem; /* ボタンのテキストを大きくする */
+            padding: 10px 20px; /* ボタンの余白を増やす */
+            background-color: #ffcc00; /* 目立つ黄色の背景色 */
+            border: none;
+            border-radius: 10px;
+            color: #000;
+            cursor: pointer;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* ボタンに影をつけて目立たせる */
+            transition: transform 0.2s, background-color 0.2s; /* ホバー時のアニメーション */
+        }
+
+        /* ボタンのホバー時のアニメーション */
+        button:hover {
+            transform: scale(1.1); /* ボタンを少し大きくする */
+            background-color: #ffaa00; /* ホバー時に色を少し濃くする */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 動画の表示 -->
+    <video autoplay loop muted>
+        <source src="{{ url_for('static', filename='videos/omikuji_animation.mp4') }}" type="video/mp4">
+        お使いのブラウザは動画の再生に対応していません。
+    </video>
+
+    <!-- おみくじを引くボタン -->
+    <form action="/omikuji" method="POST">
+        <button type="submit">おみくじを引く</button>
+    </form>
+
+</body>
+</html>

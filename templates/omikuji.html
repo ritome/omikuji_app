@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>おみくじの結果</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0e5d8;
+            font-family: Arial, sans-serif;
+        }
+
+        /* 動画のスタイル */
+        video {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        /* コメントのスタイル */
+        h2 {
+            font-size: 1.8rem;
+            margin: 10px 20px;
+            text-align: center;
+            opacity: 0; /* 最初は透明にする */
+            transition: opacity 1s ease-in-out; /* なめらかに表示 */
+        }
+
+        /* ボタンのスタイル */
+        button {
+            font-size: 1.2rem;
+            padding: 15px 30px;
+            background-color: #ffcc00;
+            border: none;
+            border-radius: 10px;
+            color: #000;
+            cursor: pointer;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        /* ボタンのホバー時の効果 */
+        button:hover {
+            transform: scale(1.05);
+            background-color: #ffaa00;
+        }
+
+        /* メディアクエリを使ってスマホ対応のスタイルを設定 */
+        @media (max-width: 600px) {
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            button {
+                font-size: 1.1rem;
+                padding: 10px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 結果の動画を表示 -->
+    <video autoplay loop muted>
+        <source src="{{ url_for('static', filename=video) }}" type="video/mp4">
+        お使いのブラウザは動画の再生に対応していません。
+    </video>
+
+    <!-- 結果のコメント、最初は透明 -->
+    <h2 id="result-text">{{ result }}: {{ message }}</h2>
+
+    <!-- もう一度おみくじを引くボタン -->
+    <form action="/" method="GET">
+        <button type="submit">もう一度おみくじを引く</button>
+    </form>
+
+    <script>
+        // ページが読み込まれたら、5秒後にコメントを表示
+        window.onload = function() {
+            setTimeout(function() {
+                // コメントを透明から表示状態に変更
+                document.getElementById('result-text').style.opacity = '1';
+            }, 4000); // 4秒後に表示
+        }
+    </script>
+
+</body>
+</html>
