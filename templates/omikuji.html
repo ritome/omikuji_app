@@ -83,14 +83,20 @@
     </form>
 
     <script>
-        // ページが読み込まれたら、5秒後にコメントを表示
-        window.onload = function() {
-            setTimeout(function() {
-                // コメントを透明から表示状態に変更
-                document.getElementById('result-text').style.opacity = '1';
-            }, 4000); // 4秒後に表示
-        }
-    </script>
+    // ページが読み込まれたら、動画の再生を強制
+    document.addEventListener('DOMContentLoaded', function() {
+        var video = document.querySelector('video');
+        video.play();
+    });
+
+    // ページが読み込まれたら、4秒後にコメントを表示
+    window.onload = function() {
+        setTimeout(function() {
+            // コメントを透明から表示状態に変更
+            document.getElementById('result-text').style.opacity = '1';
+        }, 3000); // 4秒後に表示
+    }
+</script>
 
 </body>
 </html>
