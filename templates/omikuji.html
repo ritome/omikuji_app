@@ -69,7 +69,7 @@
 <body>
 
     <!-- 結果の動画を表示 -->
-    <video autoplay loop muted>
+    <video autoplay loop muted playsinline>
         <source src="{{ url_for('static', filename=video) }}" type="video/mp4">
         お使いのブラウザは動画の再生に対応していません。
     </video>
@@ -83,20 +83,20 @@
     </form>
 
     <script>
-    // ページが読み込まれたら、動画の再生を強制
+    // DOMが読み込まれたら、動画の再生を強制し、コメントを4秒後に表示
     document.addEventListener('DOMContentLoaded', function() {
         var video = document.querySelector('video');
-        video.play();
-    });
+        video.muted = true;  // 音を無効化する
+        video.play().catch(function(error) {
+            console.error("動画の再生がブロックされました: ", error);
+        });
 
-    // ページが読み込まれたら、4秒後にコメントを表示
-    window.onload = function() {
+        // 4秒後にコメントを表示
         setTimeout(function() {
-            // コメントを透明から表示状態に変更
             document.getElementById('result-text').style.opacity = '1';
-        }, 3000); // 4秒後に表示
-    }
-</script>
+        }, 4000); // 4秒後に表示
+    });
+    </script>
 
 </body>
 </html>
