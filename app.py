@@ -7,15 +7,24 @@ app = Flask(__name__, static_url_path="/static")
 omikuji_results = {
     "大吉": {
         "video": "videos/daikichi_animation.mp4",
-        "message": "今日はとってもラッキーですね。一日爽やかに過ごせるでしょう。",
+        "message": "今日のあなたは最高の運勢！新しいことに挑戦すると素敵な結果が待っていますよ。",
     },
-    "吉": {"video": "videos/kichi_animation.mp4", "message": "良いことがありそうです！"},
-    "中吉": {"video": "videos/chukichi_animation.mp4", "message": "まあまあの一日になるでしょう。"},
-    "小吉": {"video": "videos/shoukichi_animation.mp4", "message": "ちょっと良いことがあるかも？"},
-    "末吉": {"video": "videos/suekichi_animation.mp4", "message": "あまり期待しすぎないように。"},
+    "吉": {
+        "video": "videos/kichi_animation.mp4",
+        "message": "今日は全体的に順調です。小さな幸せを見つけることができそうです。",
+    },
+    "中吉": {
+        "video": "videos/chukichi_animation.mp4",
+        "message": "良いことが起こりそうな予感！でも、焦らずゆっくり進みましょう。",
+    },
+    "小吉": {"video": "videos/shoukichi_animation.mp4", "message": "少しずつ前進している感じ。謙虚さを忘れずに。"},
+    "末吉": {
+        "video": "videos/suekichi_animation.mp4",
+        "message": "ちょっとした困難があるかもしれませんが、最後には良い方向に向かいます。",
+    },
     "凶": {
         "video": "videos/kyou_animation.mp4",
-        "message": "凶です。今日は少し注意が必要ですが、誰かに優しくするといいことあるかも?!",
+        "message": "注意が必要な一日。無理をせず、リラックスして過ごしましょう。",
     },
 }
 
